@@ -19,6 +19,7 @@ import Tooltip from '@mui/material/Tooltip';
 import { ordersData } from 'app/data';
 import Checkbox from '@mui/material/Checkbox';
 import SearchBox from 'app/components/SearchBox';
+import Link from 'next/link';
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 const columns = [
@@ -77,6 +78,7 @@ const Orders = () => {
   };
 
   return (
+    <>
     <div className='card p-0 pr-1 pb-5 dark:border-[rgba(255,255,255,0.1)] dark:bg-themeDark w-[100%] mt-4'>
       <div className='row flex items-center justify-between p-5'>
         <h2 className="text-[22px] font-bold">Recent Order </h2>
@@ -115,8 +117,7 @@ const Orders = () => {
                         </div>
                       </div>
                     </TableCell>
-
-                    <TableCell>
+         <TableCell>
                       <span className="text-nowrap">
                         {order?.items}</span>
                     </TableCell>
@@ -162,14 +163,18 @@ const Orders = () => {
                     <TableCell>
                       <div className='flex items-center gap-1 actions w-[150]'>
                         <Tooltip title="Edit" placement="top">
-                          <Button className='!min-w-[30px] !w-[30px] !h-[30px] !text-themeDark dark:!text-gray-100'>
-                            <MdOutlineEdit size={25} className='text-themeDark dark:!text-gray-100' />
-                          </Button>
+                          <Link href="/products/editProduct" passHref>
+                            <Button className='!min-w-[30px] !w-[30px] !h-[30px] !text-themeDark'>
+                              <MdOutlineEdit size={25} className='text-themeDark dark:!text-gray-100' />
+                            </Button>
+                          </Link>
                         </Tooltip>
                         <Tooltip title="View" placement="top">
-                          <Button className='!min-w-[30px] !w-[30px] !h-[30px] !text-themeDark'>
-                            <FaRegEye size={25} className='text-themeDark dark:!text-gray-100' />
-                          </Button>
+                          <Link href="/products/view" passHref>
+                            <Button className='!min-w-[30px] !w-[30px] !h-[30px] !text-themeDark'>
+                              <FaRegEye size={25} className='text-themeDark dark:!text-gray-100' />
+                            </Button>
+                          </Link>
                         </Tooltip>
                         <Tooltip title="Delete" placement="top">
                           <Button className='!min-w-[30px] !w-[30px] !h-[30px] !text-themeDark'>
@@ -195,7 +200,8 @@ const Orders = () => {
       />
 
     </div>
-
+    <br/><br/> 
+</>
   )
 }
 

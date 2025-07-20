@@ -135,7 +135,7 @@ form .MuiSelect-root {
   border: 0.5px solid rgba(255, 255, 255, 0.8) !important;
 }
 
- .dark form .MuiSelect-root {
+.dark form .MuiSelect-root {
   background: #1f2937 !important;
   color: #9ca3af !important;
 
@@ -163,8 +163,9 @@ form .css-6mustt-MuiFormControl-root {
 .dark .rsw-editor {
   background: #1f2937 !important;
 }
+
 .dark .rsw-separator {
-border: 0.5px solid rgba(255, 255, 255, 0.1) !important;
+  border: 0.5px solid rgba(255, 255, 255, 0.1) !important;
 
 }
 

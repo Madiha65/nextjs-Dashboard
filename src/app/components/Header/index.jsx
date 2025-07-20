@@ -16,6 +16,7 @@ import Divider from '@mui/material/Divider';
 import { FaRegUser } from "react-icons/fa6";
 import { IoMdSettings } from "react-icons/io";
 import { IoIosLogOut } from "react-icons/io";
+import Tooltip from '@mui/material/Tooltip';
 
 const Header = () => {
   const context = useContext(MyContext);
@@ -42,29 +43,34 @@ const Header = () => {
     <header className={`flex fixed top-0 right-0 z-[100] px-4 py-3 justify-between shadow-md transition-all bg-white dark:!bg-themeDark
       ${context.isToggleSidebar === false ? 'w-[82%]' : 'w-[100%]'}`}>
       <div className='flex items-center gap-3'>
+         <Tooltip
+      title={ context.isToggleSidebar ? "Exit Full Screen" : "Enter Full Screen"}
+      placement="bottom"
+    >
         <Button className='!min-w-[45px] !w-[45px] !h-[45] !rounded-full !text-gray-800
          dark:!text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800' onClick={toggleNav}>
           {
             context.isToggleSidebar === false ? < MdMenuOpen size={25} /> : <IoIosMenu size={25} />
           }
 
-        </Button>
+        </Button></Tooltip>
         <SearchBox placeholder="Search Here....." width="450px" />
       </div>
       <div className="flex items-center gap-3">
-        <Button
-          onClick={changeTheme}
-          className='!min-w-[45px] !w-[45px] !h-[45] !rounded-full !text-gray-800
-         dark:!text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800'
-        >
-          {
-            context.theme === "light" ? < MdLightMode size={30} /> : <IoMoonSharp size={30} />
-          }
-        </Button>
-        <Button className='!min-w-[45px] !w-[45px] !h-[45] !rounded-full !text-gray-800
-         dark:!text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800'>
-          <IoIosNotificationsOutline size={30} />
-        </Button>
+       <Tooltip title={context.theme === "light" ? "Switch to Dark Mode" : "Switch to Light Mode"} placement="bottom">
+    <Button
+      onClick={changeTheme}
+      className='!min-w-[45px] !w-[45px] !h-[45px] !rounded-full !text-gray-800 dark:!text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800'
+    >
+      {context.theme === "light" ? <MdLightMode size={30} /> : <IoMoonSharp size={30} />}
+    </Button>
+  </Tooltip>
+       <Tooltip title="Notifications" placement="bottom">
+    <Button className='!min-w-[45px] !w-[45px] !h-[45px] !rounded-full !text-gray-800 dark:!text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800'>
+      <IoIosNotificationsOutline size={30} />
+    </Button>
+  </Tooltip>
+
         <div className="flex items-center gap-3 ">
           <Button className="!min-w-[45px] !w-[45px] !h-[45px] !rounded-full flex items-center justify-center !p-0 !overflow-hidden
            !bg-medium dark:!bg-blue-600 !text-white" onClick={handleClickMenu}>
